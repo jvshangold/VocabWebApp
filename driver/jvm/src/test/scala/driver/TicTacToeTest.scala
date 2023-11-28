@@ -104,7 +104,7 @@ class TicTacToeTest extends WebappTest[TicTacToeEvent, TicTacToeState, TicTacToe
             sm.project(s)(u).testViewWire
 
   test("ticTacToe: Event wire (2pt)"):
-    testWires(false, true)
+    testWires(true, false)
 
   test("ticTacToe: View wire (8pt)"):
     testWires(false, true)

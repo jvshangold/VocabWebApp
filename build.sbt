@@ -26,6 +26,7 @@ lazy val driver = (crossProject(JVMPlatform, JSPlatform) in file("./driver"))
     scalaJSUseMainModuleInitializer := true,
     test / aggregate := false,
     Test / test := {},
+    Test / testOnly := {},
     libraryDependencies ++= Seq(
       "com.lihaoyi" %%% "ujson" % "3.1.3",
       "org.scala-js" %%% "scalajs-dom" % "2.8.0",

@@ -11,6 +11,7 @@ lazy val shared = crossProject(JSPlatform, JVMPlatform).in(file("./shared"))
   ).jsSettings(
     test / aggregate := false,
     Test / test := {},
+    Test / testOnly := {}
   ).jvmSettings(
   )
 
@@ -31,6 +32,7 @@ lazy val client = (project in file("./client"))
     testFrameworks += new TestFramework("utest.runner.Framework"),
     test / aggregate := false,
     Test / test := {},
+    Test / testOnly := {}
   )
 
 lazy val server = (project in file("./server"))

@@ -103,14 +103,14 @@ class TicTacToeTest extends WebappTest[TicTacToeEvent, TicTacToeState, TicTacToe
           for u <- USER_IDS do
             sm.project(s)(u).testViewWire
 
-  test("ticTacToe: Event wire (2pt)"):
+  test("ticTacToe: Event wire (2pts)"):
     testWires(true, false)
 
-  test("ticTacToe: View wire (8pt)"):
+  test("ticTacToe: View wire (8pts)"):
     testWires(false, true)
 
   for (name, MoveList(moves, expectedWinner)) <- MOVE_LISTS do
-    test(f"ticTacToe: Winner: $name (2pt)"):
+    test(f"ticTacToe: Winner: $name (2pts)"):
       val st = playMoves(s0, moves)(assumeOk)
       for u <- USER_IDS do
         val f = sm.project(st)(u).assertInstanceOf[TicTacToeView.Finished]

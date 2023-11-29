@@ -24,12 +24,24 @@ abstract class WebappTest[Event, State, View] extends munit.FunSuite:
 
   /// Testing helpers
 
-  def assertSingleRender[V](ts: util.Try[Seq[messages.Action[V]]]): V =
+  def assertSuccess[V](ts: util.Try[V]): V =
     assert(ts.isSuccess, f"Unexpected failure: $ts")
-    assertEquals(ts.get.length, 1)
-    val r = ts.get(0).assertInstanceOf[messages.Action.Render[V]]
+    ts.get
+
+  def assertSingleRender[V](actions: Seq[messages.Action[V]]): V =
+    assertEquals(actions.length, 1)
+    val r = actions(0).assertInstanceOf[messages.Action.Render[V]]
     r.st
 
+  def assertSingleRender[V](ts: util.Try[Seq[messages.Action[V]]]): V =
+    assertSingleRender(assertSuccess(ts))
+
+  def assertMultipleActions[K](ts: util.Try[Seq[messages.Action[K]]], n: Int): Seq[messages.Action[K]] =
+    val actions = assertSuccess(ts)
+    assertEquals(actions.length, n)
+    actions.map(_.asInstanceOf[messages.Action[K]])
+
+  // [Any] is a trick to avoid using [?]
   inline def assertFailure[F <: Throwable](ts: util.Try[Seq[messages.Action[Any]]]): F =
     assert(ts.isFailure)
     ts.failed.get.assertInstanceOf[F]

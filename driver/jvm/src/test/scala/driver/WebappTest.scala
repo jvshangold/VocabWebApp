@@ -49,7 +49,7 @@ abstract class WebappTest[Event, State, View] extends munit.FunSuite:
   def testWire[T](w: WireFormat[T])(t: T): T =
     val d = w.decode(w.encode(t))
     assert(d.isSuccess)
-    assertEquals(t, d.get)
+    assertEquals(d.get, t)
     t
 
   extension (v: View)

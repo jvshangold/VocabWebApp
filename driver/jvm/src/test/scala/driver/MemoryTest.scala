@@ -271,7 +271,7 @@ class MemoryTest extends WebappTest[MemoryEvent, MemoryState, MemoryView]:
 
 /// ## Additional tests
 
-  test("Cards should be randomized (2pts)"):
+  test("Memory: Cards should be randomized (2pts)"):
     assert((0 to 5).map(_ => guessCards(sm.init(USER_IDS))).distinct.size > 1)
 
   test("Memory: Flipping cards in a different order should give identical results (2pts)"):

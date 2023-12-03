@@ -16,8 +16,8 @@ type Card = String
   * player picks two cards and then clicks “flip!”) while others wait for cards
   * to be selected, and viewing the results (when the cards are briefly shown).
   *
-  * @param board
-  *   A view of the board.
+  * @param stateView
+  *   A projection of the current phase of the game.
   * @param alreadyMatched
   *   The cards that each player has successfully matched since the beginning of
   *   the game.

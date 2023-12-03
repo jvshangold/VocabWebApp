@@ -20,7 +20,7 @@ object MemoryStateMachine extends cs214.webapp.StateMachine[MemoryEvent, MemoryS
   val wire = MemoryWire
 
   def Deck(cards: String): Vector[String] =
-    cards.strip.split(" +").to(Vector)
+    cards.trim.split(" +").to(Vector)
 
   val DECKS: Map[String, Vector[String]] = Map(
     "Simple" -> Deck("""

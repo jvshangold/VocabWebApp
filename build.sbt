@@ -13,6 +13,9 @@ lazy val ticTacToeJVM = project in file("./apps/ticTacToe")
 lazy val memoryJS = project in file("./apps/memory")
 lazy val memoryJVM = project in file("./apps/memory")
 
+lazy val vocabJS = project in file("./apps/vocab")
+lazy val vocabJVM = project in file("./apps/memory")
+
 /// Tests
 
 lazy val driver = (crossProject(JVMPlatform, JSPlatform) in file("./driver"))
@@ -49,14 +52,14 @@ lazy val driver = (crossProject(JVMPlatform, JSPlatform) in file("./driver"))
     )
   )
 
-lazy val driverJS = driver.js.dependsOn(ticTacToeJS, memoryJS)
-lazy val driverJVM = driver.jvm.dependsOn(ticTacToeJVM, memoryJVM)
+lazy val driverJS = driver.js.dependsOn(ticTacToeJS, memoryJS, vocabJS)
+lazy val driverJVM = driver.jvm.dependsOn(ticTacToeJVM, memoryJVM, vocabJVM)
 
 /// Aggregate project
 
-lazy val webapp = (project in file("."))
+lazy val mywebapp = (project in file("."))
   .aggregate(
-    ticTacToeJS, ticTacToeJVM, memoryJS, memoryJVM, driverJS, driverJVM
+    ticTacToeJS, ticTacToeJVM, memoryJS, memoryJVM, vocabJS, vocabJVM, driverJS, driverJVM
   ).settings(
     name := "webapp",
     scalaVersion := "3.3.1",
@@ -73,7 +76,8 @@ lazy val webapp = (project in file("."))
       val outDir = baseDirectory.value / "target/test-reports/"
       Seq(
         "TEST-driver.MemoryTest.xml",
-        "TEST-driver.TicTacToeTest.xml"
+        "TEST-driver.TicTacToeTest.xml",
+        "TEST-driver.VocabTest.xml"
       ) map { p => (inDir / p, outDir / p) } foreach { f => IO.copyFile(f._1, f._2) }
     },
     // FIXME: Race conditions in integration tests

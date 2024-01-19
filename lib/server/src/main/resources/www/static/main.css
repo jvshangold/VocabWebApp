@@ -179,7 +179,7 @@ form > *:last-child {
     border-top: var(--border);
 }
 
-.memory .card, .tictactoe .cell {
+.memory .card, .tictactoe .cell, .vocab .card {
     aspect-ratio: 1;
     align-items: center;
     display: flex;
@@ -196,7 +196,7 @@ form > *:last-child {
     justify-content: space-between;
 }
 
-.memory .card {
+.memory .card, .vocab .card {
     align-items: center;
     background: #eeeeec;
     border-radius: 0.5rem;

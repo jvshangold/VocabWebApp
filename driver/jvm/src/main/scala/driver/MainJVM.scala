@@ -6,4 +6,5 @@ object MainJVM:
   @main def main() =
     WebServer.register("tictactoe")
     WebServer.register("memory")
+    WebServer.register("vocab")
     WebServer.start()

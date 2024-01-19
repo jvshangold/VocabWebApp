@@ -1,7 +1,7 @@
 # Hello
 My name is Jerome Shangold. I'm a third year undergraduate at Johns Hopkins.
 The work done in this repository is a personal project that is an extension on a
-lab for the **bold** Software Construction **bold** course at EPFL.
+lab for the **Software Construction** course at EPFL.
 
 ## My goal 
 in this project was to make a centralized web app that can accept new
